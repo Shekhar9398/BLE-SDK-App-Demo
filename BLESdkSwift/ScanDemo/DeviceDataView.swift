@@ -12,11 +12,15 @@ struct DeviceDataView: View {
             Text("Device Time: \(viewModel.deviceTime)")
                 .font(.title2)
                 .padding()
-            
-            
-            ForEach(viewModel.ecg, id: \.self){ ecgValueArr in
-                Text("ECG Data: \(ecgValueArr.ecgValues.count)")
-                    .font(.title2)
+
+            // ECG Waveform View
+            if !viewModel.ecg.isEmpty {
+                ECGWaveformView(ecgData: viewModel.ecg, lineColor: .green)
+                    .frame(height: 200)
+                    .padding()
+            } else {
+                Text("No ECG Data")
+                    .foregroundColor(.gray)
                     .padding()
             }
 

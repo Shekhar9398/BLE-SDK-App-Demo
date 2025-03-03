@@ -4,7 +4,7 @@ import Combine
 class DeviceViewModel: ObservableObject {
     @Published var batteryLevel: String = "Fetching..."
     @Published var deviceTime: String = "Fetching..."
-    @Published var ecg: [ECGData] = []
+    @Published var ecg: [Int] = [] // Now stores only ECG values, not ECGData objects
 
     private var cancellables = Set<AnyCancellable>()
     private let bleModel = BLEManager.shared.bleModel
@@ -12,31 +12,36 @@ class DeviceViewModel: ObservableObject {
     init() {
         observeBLEData()
     }
-    
+
     private func observeBLEData() {
+        // Observe Battery Level
         bleModel.$batteryLevel
             .receive(on: DispatchQueue.main)
             .sink { [weak self] level in
-                print("ViewModel Received Battery Update: \(level ?? -1)")
                 self?.batteryLevel = level != nil ? "\(level!)%" : "Error fetching"
             }
             .store(in: &cancellables)
-        
+
+        // Observe Device Time
         bleModel.$deviceTime
             .receive(on: DispatchQueue.main)
             .sink { [weak self] time in
-                print("ViewModel Received Device Time Update: \(time)")
                 self?.deviceTime = time
             }
             .store(in: &cancellables)
-        
+
+        // Observe ECG Data (Convert ECGData to [Int])
         bleModel.$ecgData
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] ecgData in
-                self?.ecg = ecgData
+            .sink { [weak self] newECGData in
+                guard let self = self else { return }
+
+                if let firstECG = newECGData.first {
+                    print("New ECG Data Received: \(firstECG.ecgValues)")
+                    self.ecg = firstECG.ecgValues // Extract only the ECG values
+                }
             }
             .store(in: &cancellables)
-
     }
 
     func fetchData() {
