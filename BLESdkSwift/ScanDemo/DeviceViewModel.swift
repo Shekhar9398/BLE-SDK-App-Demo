@@ -4,7 +4,7 @@ import Combine
 class DeviceViewModel: ObservableObject {
     @Published var batteryLevel: String = "Fetching..."
     @Published var deviceTime: String = "Fetching..."
-    @Published var ecg: String = "ecg data"
+    @Published var ecg: [ECGData] = []
 
     private var cancellables = Set<AnyCancellable>()
     private let bleModel = BLEManager.shared.bleModel
@@ -30,12 +30,12 @@ class DeviceViewModel: ObservableObject {
             }
             .store(in: &cancellables)
         
-//        bleModel.$ecgData
-//            .receive(on: DispatchQueue.main)
-//            .sink { [weak self] liveEcg in
-//                self?.ecg = liveEcg.map { "\($0)" }.joined(separator: ", ") // Convert array to a string
-//            }
-//            .store(in: &cancellables)
+        bleModel.$ecgData
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] ecgData in
+                self?.ecg = ecgData
+            }
+            .store(in: &cancellables)
 
     }
 
@@ -43,6 +43,6 @@ class DeviceViewModel: ObservableObject {
         print("Fetching Data from BLEManager...")
         BLEManager.shared.fetchData(for: .batteryLevel)
         BLEManager.shared.fetchData(for: .deviceTime)
-//        BLEManager.shared.fetchData(for: .ecg)
+        BLEManager.shared.fetchData(for: .ecg)
     }
 }

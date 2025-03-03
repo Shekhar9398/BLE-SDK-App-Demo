@@ -28,7 +28,7 @@ struct ContentView: View {
                         .hidden()
 
                         Button(action: {
-                            print("🔄 Navigating to DeviceDataView...")
+                            print("Navigating to DeviceDataView...")
                             navigateToDeviceData = true
                         }) {
                             Text("View Device Data")
@@ -41,7 +41,7 @@ struct ContentView: View {
                         .padding(.horizontal)
 
                         Button("Disconnect") {
-                            print("🔴 Disconnecting Device...")
+                            print("Disconnecting Device...")
                             viewModel.disconnectDevice()
                         }
                         .frame(maxWidth: .infinity)

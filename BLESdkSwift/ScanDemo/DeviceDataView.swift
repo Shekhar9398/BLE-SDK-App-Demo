@@ -12,9 +12,16 @@ struct DeviceDataView: View {
             Text("Device Time: \(viewModel.deviceTime)")
                 .font(.title2)
                 .padding()
+            
+            
+            ForEach(viewModel.ecg, id: \.self){ ecgValueArr in
+                Text("ECG Data: \(ecgValueArr.ecgValues.count)")
+                    .font(.title2)
+                    .padding()
+            }
 
             Button(action: {
-                print("🔘 Fetch Data Button Pressed")
+                print("Fetch Data Button Pressed")
                 viewModel.fetchData()
             }) {
                 Text("Fetch Data")

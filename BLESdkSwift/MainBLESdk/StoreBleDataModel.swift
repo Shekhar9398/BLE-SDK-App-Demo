@@ -1,6 +1,6 @@
 import Foundation
 
-class BLEModel: ObservableObject {
+class StoreBleDataModel: ObservableObject {
     // General Device Info
     @Published var deviceTime: String = "Fetching..."
     @Published var batteryLevel: Int? = nil

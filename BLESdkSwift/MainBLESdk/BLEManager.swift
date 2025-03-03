@@ -16,7 +16,7 @@ class BLEManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeriph
 
     @Published var discoveredDevices: [CBPeripheral] = []
     @Published var connectedDevice: CBPeripheral?
-    @Published var bleModel = BLEModel()  // Stores all parsed data
+    @Published var bleModel = StoreBleDataModel()  // Stores all parsed data
 
     private var centralManager: CBCentralManager!
     private var sendCharacteristic: CBCharacteristic?
