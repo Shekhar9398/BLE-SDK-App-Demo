@@ -215,17 +215,31 @@ class BLEManager: NSObject, ObservableObject, CBCentralManagerDelegate, CBPeriph
             
             print("Parsed Data Before Updating BLEModel: \(parsedData)")  // Debugging line
 
-            DispatchQueue.main.async {
-                if let battery = parsedData["batteryLevel"] as? Int {
+          DispatchQueue.main.async {
+              if let ecgArray = parsedData["arrayEcgData"] as? [NSNumber] {
+                  let timestamp = Date()  // Capture the current timestamp
+
+                  let ecgData = ECGData(timestamp: timestamp, ecgValues: ecgArray.map { $0.intValue })
+                  self.bleModel.ecgData.append(ecgData)
+
+                  print("ECG Data Updated: \(ecgData)")
+              }
+
+
+
+                if let battery = parsedData["batteryLevel"] as? Int, self.commandQueue.contains(.batteryLevel) {
                     self.bleModel.batteryLevel = battery
+                    print("Battery Updated: \(battery)")
                 }
-                if let time = parsedData["deviceTime"] as? String {
-                    self.bleModel.deviceTime = time
-                }
-                self.bleModel.shouldUpdateView.toggle()
                 
-                print("BLEModel Updated: Battery: \(self.bleModel.batteryLevel ?? -1), Time: \(self.bleModel.deviceTime)") // Debugging line
+                if let time = parsedData["deviceTime"] as? String, self.commandQueue.contains(.deviceTime) {
+                    self.bleModel.deviceTime = time
+                    print("Device Time Updated: \(time)")
+                }
+
+                self.bleModel.shouldUpdateView.toggle()
             }
+
         } else {
             print("Failed to parse received data")
         }

@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F4563BF12D6F2CB7005237C9 /* libBleSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F4563BEF2D6F2CB7005237C9 /* libBleSDK.a */; };
-		F4563BF92D6F58F9005237C9 /* DeviceDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4563BF82D6F58F9005237C9 /* DeviceDataView.swift */; };
-		F481741D2D75FBB800AFC6BC /* ECGWaveformView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F481741C2D75FBB800AFC6BC /* ECGWaveformView.swift */; };
+		F46B9E452D76DF8B007E4162 /* BatteryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B9E442D76DF8B007E4162 /* BatteryView.swift */; };
+		F46B9E472D76DFA2007E4162 /* DeviceTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B9E462D76DFA2007E4162 /* DeviceTimeView.swift */; };
+		F46B9E492D76E033007E4162 /* FullECGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46B9E482D76E033007E4162 /* FullECGView.swift */; };
+		F481741D2D75FBB800AFC6BC /* ECGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F481741C2D75FBB800AFC6BC /* ECGView.swift */; };
 		F4CA76262D758D2B0016E1DF /* DeviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CA76252D758D2B0016E1DF /* DeviceViewModel.swift */; };
 		F4CD9F3D2D71A7130070214E /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CD9F3C2D71A7130070214E /* BLEManager.swift */; };
 		F4CD9F462D71F5AC0070214E /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4CD9F452D71F5AC0070214E /* Models.swift */; };
@@ -30,8 +32,10 @@
 		F4563BEE2D6F2CB7005237C9 /* DeviceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceData.h; sourceTree = "<group>"; };
 		F4563BEF2D6F2CB7005237C9 /* libBleSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBleSDK.a; sourceTree = "<group>"; };
 		F4563BF22D6F2D37005237C9 /* BLESdkSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BLESdkSwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		F4563BF82D6F58F9005237C9 /* DeviceDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataView.swift; sourceTree = "<group>"; };
-		F481741C2D75FBB800AFC6BC /* ECGWaveformView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECGWaveformView.swift; sourceTree = "<group>"; };
+		F46B9E442D76DF8B007E4162 /* BatteryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryView.swift; sourceTree = "<group>"; };
+		F46B9E462D76DFA2007E4162 /* DeviceTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceTimeView.swift; sourceTree = "<group>"; };
+		F46B9E482D76E033007E4162 /* FullECGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullECGView.swift; sourceTree = "<group>"; };
+		F481741C2D75FBB800AFC6BC /* ECGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ECGView.swift; sourceTree = "<group>"; };
 		F4CA76252D758D2B0016E1DF /* DeviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewModel.swift; sourceTree = "<group>"; };
 		F4CD9F3C2D71A7130070214E /* BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		F4CD9F452D71F5AC0070214E /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -127,8 +131,10 @@
 				F4D839AC2D6E580500C39EBA /* BLEScannerView.swift */,
 				F4D839AE2D6E582B00C39EBA /* BLEScannerViewModel.swift */,
 				F4CA76252D758D2B0016E1DF /* DeviceViewModel.swift */,
-				F4563BF82D6F58F9005237C9 /* DeviceDataView.swift */,
-				F481741C2D75FBB800AFC6BC /* ECGWaveformView.swift */,
+				F46B9E442D76DF8B007E4162 /* BatteryView.swift */,
+				F46B9E462D76DFA2007E4162 /* DeviceTimeView.swift */,
+				F481741C2D75FBB800AFC6BC /* ECGView.swift */,
+				F46B9E482D76E033007E4162 /* FullECGView.swift */,
 			);
 			path = ScanDemo;
 			sourceTree = "<group>";
@@ -204,15 +210,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4CD9F482D71F6510070214E /* StoreBleDataModel.swift in Sources */,
-				F481741D2D75FBB800AFC6BC /* ECGWaveformView.swift in Sources */,
+				F481741D2D75FBB800AFC6BC /* ECGView.swift in Sources */,
 				F4CA76262D758D2B0016E1DF /* DeviceViewModel.swift in Sources */,
 				F4D839AF2D6E582B00C39EBA /* BLEScannerViewModel.swift in Sources */,
 				F4CD9F462D71F5AC0070214E /* Models.swift in Sources */,
-				F4563BF92D6F58F9005237C9 /* DeviceDataView.swift in Sources */,
 				F4D839AD2D6E580500C39EBA /* BLEScannerView.swift in Sources */,
 				F4CD9F4C2D71FFBD0070214E /* BLEDataType.swift in Sources */,
 				F4CD9F3D2D71A7130070214E /* BLEManager.swift in Sources */,
+				F46B9E472D76DFA2007E4162 /* DeviceTimeView.swift in Sources */,
+				F46B9E492D76E033007E4162 /* FullECGView.swift in Sources */,
 				F4D8398F2D6E418900C39EBA /* ContentView.swift in Sources */,
+				F46B9E452D76DF8B007E4162 /* BatteryView.swift in Sources */,
 				F4CD9F502D72037B0070214E /* BatteryViewModel.swift in Sources */,
 				F4D8398D2D6E418900C39EBA /* BLESdkSwiftApp.swift in Sources */,
 			);
